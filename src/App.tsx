@@ -7,11 +7,15 @@ import { PersonInput } from './components/PersonInput';
 import { MiddleComponent } from './components/MiddleComponent';
 
 export default function App() {
-  const [text, setText] = useState('');
+  // const [text, setText] = useState('');
+  const [value, setValue] = useState(10);
 
   return <>
     <div>App</div>
-    {/* <Counter/>     */}
+    <Counter initialValue={value}/>
+    <Counter key={value} />
+    <button onClick={() => setValue(20)}>Imposta a venti</button>
+    <div>value: {value}</div>
     {/* <TextComponent/> */}
     {/*
                                                     onChange e la funzione di callBack che passiamo al nostro CustomImput  
@@ -28,13 +32,14 @@ export default function App() {
     {/* <MyCustomInput required={false} label={'Cognome'}/> */}
     {/* <CounterWithObjectState/> */}
 
-    <PersonInput onSave={ (person) => {
+    {/* <PersonInput onSave={ (person) => {
       console.log(person);
     }}/>
 
     <MiddleComponent onChange={ (person) => {
       console.log(person);
-    } }/>
+    } }/> */}
+
 
   </>
 }
