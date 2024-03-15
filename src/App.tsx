@@ -1,21 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Counter from './components/Counter';
 import CounterWithObjectState from './components/CounterWithObjectState';
 import { MyCustomInput } from './components/MyCustomInput';
 import { TextComponent } from './components/TextComponent';
 import { PersonInput } from './components/PersonInput';
 import { MiddleComponent } from './components/MiddleComponent';
+import { IncrementalComponent } from './components/IncrementalComponent';
+import { ToDoList } from './components/todolist/ToDoList';
+
+function calcolo(n: number) {
+  return n * 2;
+}
 
 export default function App() {
   // const [text, setText] = useState('');
-  const [value, setValue] = useState(10);
+  // const [value, setValue] = useState(10);
+
+  // // ricalcola questa funzione solo quando cambia value, se no ritorna sempre lo stesso valore che si e salvato in cache la prima volta
+  // const risultatoCalcolo = useMemo(() => {
+  //   return calcolo(value);
+  // }, [value]);
+
+  // React invoca questo effetto solo al montaggio del componente quando la lista di dipendenze e vuota
+  // una situazione tipica e un data fetch da un server per caricare i dati
+  // il return e l'evento oppost, quando si smonta, tipo render condizionale quando un elemento sparisce
+  // useEffect( () => {
+  //   console.log('useEffect in mount!');
+  //   return () => {
+  //     console.log('useEffect unmount effect!');
+  //   }
+  // }, []);
+
+  // console.log('App()');
 
   return <>
-    <div>App</div>
+    {/* <div>App</div>
+    <div>Risultato calcolo: {risultatoCalcolo}</div>
     <Counter initialValue={value}/>
     <Counter key={value} />
     <button onClick={() => setValue(20)}>Imposta a venti</button>
-    <div>value: {value}</div>
+    <div>value: {value}</div> */}
     {/* <TextComponent/> */}
     {/*
                                                     onChange e la funzione di callBack che passiamo al nostro CustomImput  
@@ -40,6 +64,8 @@ export default function App() {
       console.log(person);
     } }/> */}
 
+    {/* {value !== 20 && <IncrementalComponent />} */}
+    <ToDoList />
 
   </>
 }

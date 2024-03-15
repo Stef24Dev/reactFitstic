@@ -5,7 +5,7 @@ export default function Counter(props: {
   readonly initialValue?: number
 }) {
     const { initialValue = 0 } = props;
-    
+
     //Definizione di uno stato, di tipo number, inizializzato a 0 (stato iniziale)
     //funzione restituisce una tupla, uno e la variabile che rappresenta lo stato, la seconda e una funzione che serve per modificare lo stato
     //app si ridisegna perche gli cambiamo lo stato
@@ -20,6 +20,9 @@ export default function Counter(props: {
     useEffect(() => {
       console.log('useEffect in action!', initialValue);
       setContatore(initialValue);
+      return () => {
+        console.log('return of useEffect', initialValue);
+      }
     }, [initialValue])
 
     return <>
