@@ -12,4 +12,6 @@ export function ToDoListItem(props: {
             <button onClick={() => elimina(index)}>X</button>
         </div>
     </>
+
+    
 }

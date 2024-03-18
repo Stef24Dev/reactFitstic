@@ -7,6 +7,8 @@ import { PersonInput } from './components/PersonInput';
 import { MiddleComponent } from './components/MiddleComponent';
 import { IncrementalComponent } from './components/IncrementalComponent';
 import { ToDoList } from './components/todolist/ToDoList';
+import UserList from './components/client-server/UserList';
+import { BrowserRouter, HashRouter, Link, Route, RouterProvider, Routes, createBrowserRouter } from 'react-router-dom';
 
 function calcolo(n: number) {
   return n * 2;
@@ -34,8 +36,22 @@ export default function App() {
   // console.log('App()');
 
   return <>
-    {/* <div>App</div>
-    <div>Risultato calcolo: {risultatoCalcolo}</div>
+    {/* qui viene visualizzato cio che passiamo al nostro router */}
+    <h1>App</h1>
+
+    <HashRouter>
+      <div>
+        <Link to={''}>Vai a Home</Link>
+        <Link to={'userlist'}>Vai a userList</Link>
+        <Link to={'counter'}>Vai a counter</Link>
+      </div>
+      <Routes>
+        <Route path='/' element={<div>Hello world</div>}/>
+        <Route path='/userlist' element={<UserList/>}/>
+        <Route path='/counter' element={<Counter/>}/>
+      </Routes>
+    </HashRouter>
+    {/*<div>Risultato calcolo: {risultatoCalcolo}</div>
     <Counter initialValue={value}/>
     <Counter key={value} />
     <button onClick={() => setValue(20)}>Imposta a venti</button>
@@ -65,7 +81,9 @@ export default function App() {
     } }/> */}
 
     {/* {value !== 20 && <IncrementalComponent />} */}
-    <ToDoList />
+    {/* <ToDoList /> */}
+
+    {/* <UserList/> */}
 
   </>
 }
